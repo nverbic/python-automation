@@ -53,18 +53,3 @@ def create_subdirectories(directory_path):
 if __name__== '__main__':
     directory_path = ".\\src\\01 Automate file interaction\\Mixed"
     create_subdirectories(directory_path)
-
-
-# def organizeDirectory():
-#     for item in os.scandir():
-#         if item.is_dir():
-#             continue
-#         filePath = Path(item)
-#         filetype = filePath.suffix.lower()
-#         directory = pickDirectory(filetype)
-#         directoryPath = Path(directory)
-#         if directoryPath.is_dir() != True:
-#             directoryPath.mkdir()
-#         filePath.rename(directoryPath.joinpath(filePath))
-
-# organizeDirectory()
