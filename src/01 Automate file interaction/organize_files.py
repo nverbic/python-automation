@@ -1,4 +1,4 @@
-''' Organize files  into subdirectories 
+''' Organize files into subdirectories 
     
     Output:
     Created a subdirectory: src\01 Automate file interaction\\Documents
@@ -18,15 +18,16 @@ SUBDIRS = {
 
 # Select directory
 def select_subdirectory(file_type):
+    '''Return the name of the subdirectory depending on the file type'''
     for folder_name, values_list in SUBDIRS.items():
         for value in values_list:
             if file_type == value:
                 return folder_name
-    # If file type is not in the list put it in the Other folder
+    # If the file type is not in the list save it in the Mixed folder
     return 'Mixed'
 
 def create_subdirectories(directory_path):
-    ''' Create subdirectories and organize the files based on the file type'''
+    '''Create subdirectories and organize the files based on the file type'''
     for item in os.scandir(directory_path):
         # Create Path object
         path_object = Path(item)
@@ -34,11 +35,13 @@ def create_subdirectories(directory_path):
         # Extract file extension and relative path to the folder where subfolders
         # are going to be created.
         file_extension = path_object.suffix
+
+        # Create subdirectories two levels above the current location
         parent_directory_path = path_object.parents[1]
 
         # Select subdirectory name
         subdir_name= select_subdirectory(file_extension)
-        
+
         # Create a new Path object for the subdirectory
         subdir_path = parent_directory_path / subdir_name
 

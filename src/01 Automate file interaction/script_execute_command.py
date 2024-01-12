@@ -1,4 +1,5 @@
-''' Executing terminal commands using subprocess library '''
+''' Executing terminal commands using subprocess library
+'''
 import subprocess
 import sys
 
